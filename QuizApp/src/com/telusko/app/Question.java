@@ -2,7 +2,19 @@ package com.telusko.app;
 
 public class Question {
 	private int qid;
-    private String title;
+    public Question(int qid, String title, String option1, String option2, String option3, String option4,
+			String correctAnswer, String userInput) {
+		super();
+		this.qid = qid;
+		this.title = title;
+		this.option1 = option1;
+		this.option2 = option2;
+		this.option3 = option3;
+		this.option4 = option4;
+		this.correctAnswer = correctAnswer;
+		this.userInput = userInput;
+	}
+	private String title;
     private String option1;
     private String option2;
     private String option3;
@@ -11,6 +23,15 @@ public class Question {
     private String userInput;
     
     public String getCorrectAnswer() {
+    	if(correctAnswer.equalsIgnoreCase("1")) {
+    		return option1;
+    	}else if(correctAnswer.equalsIgnoreCase("2")) {
+    		return option2;
+    	}else if(correctAnswer.equalsIgnoreCase("3")) {
+    		return option3;
+    	}else if(correctAnswer.equalsIgnoreCase("4")) {
+    		return option4;
+    	}
 		return correctAnswer;
 	}
 	public void setCorrectAnswer(String correctAnswer) {
@@ -59,6 +80,17 @@ public class Question {
 	public void setOption4(String option4) {
 		this.option4 = option4;
 	}
-	
-
+	@Override
+	public String toString() {
+		return "Question : " + title + "?" 
+				+  '\n' 
+				+ "Option 1 : " + option1
+				+  '\n'
+				+ "Option 2 : " + option2
+				+  '\n'
+				+ "Option 3 : " + option3
+				+  '\n'
+				+ "Option 4 : " + option4
+				+  '\n';
+	}
 }
